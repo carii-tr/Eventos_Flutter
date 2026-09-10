@@ -62,6 +62,32 @@ class EventCard extends StatelessWidget {
           // El botón deberá ejecutar:
           // onPressed();
 
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 12),
+            child: Text ('Hora: ${evento['hora']}')
+          ),
+
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 12),
+            child: Text ('Lugar: ${evento['lugar']}')
+          ),
+
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 12),
+            child: Text ('Cupo: ${evento['cupo']}')
+          ),
+
+          Padding(
+            padding: const EdgeInsets.all(12),
+            child: SizedBox(
+              width: double.infinity,
+              child: ElevatedButton(
+                onPressed: onPressed,
+                child: const Text('Me interesa'),
+              ),
+            ),
+          ),
+
           const SizedBox(height: 8),
         ],
       ),
