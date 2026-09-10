@@ -29,6 +29,7 @@ class EventCard extends StatelessWidget {
               },
             ),
           ),
+
           Padding(
             padding: const EdgeInsets.all(12),
             child: Text(
@@ -40,10 +41,12 @@ class EventCard extends StatelessWidget {
                   ),
             ),
           ),
+
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 12),
             child: Text(evento['categoria']),
           ),
+
           Padding(
             padding: const EdgeInsets.fromLTRB(12, 6, 12, 12),
             child: Text(evento['fecha']),

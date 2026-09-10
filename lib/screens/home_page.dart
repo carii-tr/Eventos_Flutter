@@ -30,7 +30,16 @@ class _HomePageState extends State<HomePage> {
     // Pista:
     // List.where(...).toList();
 
-    final eventosMostrados = eventos;
+    /* 
+    Lo que se esta haciendo es una condicion, esta es la condicion (categoriaSeleccionada == 'Todos'), en caso
+    de que sea verdadera (? eventos) muestra todos los eventos, si es falsa la condicion 
+    ( : eventos.where((evento) => evento['categoria'] == categoriaSeleccionada).toList(); ) 
+    busca solamente los eventos de la categoría seleccionada 
+    */
+
+    final eventosMostrados = categoriaSeleccionada == 'Todos'
+        ? eventos
+        : eventos.where((evento) => evento['categoria'] == categoriaSeleccionada).toList();
 
     return Scaffold(
       appBar: AppBar(
@@ -66,6 +75,8 @@ class _HomePageState extends State<HomePage> {
                       texto: categoria,
                       seleccionado: categoriaSeleccionada == categoria,
                       onTap: () {
+                        // en esta parte se muestra la categoria seleccionada, y se 
+                        // actualiza el estado de la aplicacion para que se muestren los eventos de esa categoria
                         setState(() {
                           categoriaSeleccionada = categoria;
                         });
