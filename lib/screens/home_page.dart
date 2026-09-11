@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 import '../data/event_data.dart';
 import '../widgets/category_chip.dart';
 import '../widgets/event_card.dart';
@@ -63,17 +62,18 @@ class _HomePageState extends State<HomePage> {
               ),
               const SizedBox(height: 20),
 
-              SizedBox(
-                height: 42,
-                child: ListView.builder(
-                  scrollDirection: Axis.horizontal,
-                  itemCount: categorias.length,
-                  itemBuilder: (context, index) {
-                    final categoria = categorias[index];
 
+              // logramos centrar los eventos existentes y se adaptan a la pantalla
+              Center(
+                child: Wrap(
+                  alignment: WrapAlignment.center,
+                  spacing: 8,
+                  runSpacing: 8,
+                  children: categorias.map((categoria) {
                     return CategoryChip(
                       texto: categoria,
-                      seleccionado: categoriaSeleccionada == categoria,
+                      seleccionado:
+                          categoriaSeleccionada == categoria,
                       onTap: () {
                         // en esta parte se muestra la categoria seleccionada, y se 
                         // actualiza el estado de la aplicacion para que se muestren los eventos de esa categoria
@@ -82,7 +82,7 @@ class _HomePageState extends State<HomePage> {
                         });
                       },
                     );
-                  },
+                  }).toList(),
                 ),
               ),
 
@@ -115,7 +115,11 @@ class _HomePageState extends State<HomePage> {
                         crossAxisCount: columnas,
                         crossAxisSpacing: 12,
                         mainAxisSpacing: 12,
-                        childAspectRatio: 0.72,
+                        childAspectRatio: constraints.maxWidth < 500
+                            ? 0.48
+                            : constraints.maxWidth < 900
+                                ? 0.65
+                                : 0.72,
                       ),
                       itemBuilder: (context, index) {
                         final evento = eventosMostrados[index];
