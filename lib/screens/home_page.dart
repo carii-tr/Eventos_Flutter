@@ -43,16 +43,17 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Campus Eventos'),
+        centerTitle: true,
       ),
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.all(16),
           child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Text(
                 'Eventos universitarios',
-                style: Theme.of(context).textTheme.headlineSmall?.copyWith(
+                style: Theme.of(context).textTheme.headlineMedium?.copyWith(
                       fontWeight: FontWeight.bold,
                     ),
               ),
@@ -88,10 +89,13 @@ class _HomePageState extends State<HomePage> {
 
               const SizedBox(height: 16),
 
-              Text(
-                'Eventos encontrados: ${eventosMostrados.length}',
-                style: const TextStyle(
-                  fontWeight: FontWeight.w600,
+              Align(
+                alignment: Alignment.centerLeft,
+                child: Text(
+                  'Eventos encontrados: ${eventosMostrados.length}',
+                  style: const TextStyle(
+                    fontWeight: FontWeight.w600,
+                  ),
                 ),
               ),
 
@@ -115,11 +119,11 @@ class _HomePageState extends State<HomePage> {
                         crossAxisCount: columnas,
                         crossAxisSpacing: 12,
                         mainAxisSpacing: 12,
-                        childAspectRatio: constraints.maxWidth < 500
-                            ? 0.48
+                        mainAxisExtent: constraints.maxWidth < 600
+                            ? 500
                             : constraints.maxWidth < 900
-                                ? 0.65
-                                : 0.72,
+                                ? 500
+                                : 480,
                       ),
                       itemBuilder: (context, index) {
                         final evento = eventosMostrados[index];
